@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f3ed" />
+    <meta
+      name="description"
+      content="오늘의 날씨와 기분, 그리고 하루의 이야기를 기록하는 나만의 일기장."
+    />
+    <title>하루 한 장 | 나의 일기장</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="하루 한 장 홈">
+          <span class="brand-mark" aria-hidden="true">h.</span>
+          <span class="brand-name">하루 한 장</span>
+        </a>
+        <span class="topbar-note"><span class="live-dot"></span> 나만의 작은 기록장</span>
+      </header>
+
+      <main class="layout">
+        <section class="diary-panel" aria-labelledby="page-title">
+          <div class="greeting">
+            <p class="eyebrow">MY DAILY JOURNAL</p>
+            <h1 id="page-title">오늘은 어떤 하루였나요<span class="title-dot">?</span></h1>
+            <p class="intro">작은 순간도 괜찮아요. 오늘의 마음을 천천히 적어보세요.</p>
+          </div>
+
+          <section class="entry-card" aria-label="일기 작성">
+            <div class="entry-top">
+              <div>
+                <p class="section-label">TODAY'S PAGE</p>
+                <h2 id="selected-date-label"></h2>
+              </div>
+              <div class="date-controls">
+                <button class="icon-button" id="previous-day" type="button" aria-label="하루 전">
+                  ←
+                </button>
+                <label class="sr-only" for="entry-date">일기 날짜</label>
+                <input id="entry-date" type="date" />
+                <button class="icon-button" id="next-day" type="button" aria-label="하루 뒤">
+                  →
+                </button>
+              </div>
+            </div>
+
+            <form id="diary-form">
+              <fieldset class="mood-fields">
+                <legend class="sr-only">오늘의 날씨와 기분</legend>
+                <label class="select-field">
+                  <span class="field-label">오늘의 날씨</span>
+                  <span class="select-wrap">
+                    <span class="select-icon" aria-hidden="true">☀️</span>
+                    <select id="weather" name="weather" required>
+                      <option value="">날씨 선택</option>
+                      <option value="sunny">맑음</option>
+                      <option value="cloudy">흐림</option>
+                      <option value="rainy">비</option>
+                      <option value="snowy">눈</option>
+                      <option value="windy">바람</option>
+                    </select>
+                  </span>
+                </label>
+                <label class="select-field">
+                  <span class="field-label">오늘의 기분</span>
+                  <span class="select-wrap">
+                    <span class="select-icon" aria-hidden="true">🌱</span>
+                    <select id="mood" name="mood" required>
+                      <option value="">기분 선택</option>
+                      <option value="happy">😊 좋아요</option>
+                      <option value="calm">😌 평온해요</option>
+                      <option value="ordinary">🙂 보통이에요</option>
+                      <option value="tired">😮‍💨 조금 지쳐요</option>
+                      <option value="sad">😔 아쉬워요</option>
+                    </select>
+                  </span>
+                </label>
+              </fieldset>
+
+              <label class="field-label diary-label" for="diary-content">오늘의 이야기</label>
+              <textarea
+                id="diary-content"
+                name="content"
+                placeholder="오늘 기억하고 싶은 순간을 적어보세요."
+                rows="8"
+                required
+              ></textarea>
+              <div class="form-footer">
+                <span id="character-count" class="character-count">0 / 500자</span>
+                <button class="save-button" id="save-button" type="submit">
+                  <span>일기 저장하기</span>
+                  <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+              <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+            </form>
+
+            <article id="saved-entry" class="saved-entry" hidden>
+              <div class="saved-meta">
+                <span id="saved-weather"></span>
+                <span class="meta-separator">·</span>
+                <span id="saved-mood"></span>
+              </div>
+              <p id="saved-content" class="saved-content"></p>
+              <p class="saved-note">오늘의 기록을 소중히 간직했어요.</p>
+            </article>
+          </section>
+
+          <p class="privacy-note"><span aria-hidden="true">✦</span> 하루에 한 편, 오직 나를 위한 기록</p>
+        </section>
+
+        <aside class="archive-panel" aria-labelledby="archive-title">
+          <div class="archive-heading">
+            <div>
+              <p class="section-label">YOUR COLLECTION</p>
+              <h2 id="archive-title">지난 기록</h2>
+            </div>
+            <span id="entry-count" class="entry-count">0</span>
+          </div>
+          <p class="archive-caption">차곡차곡 쌓이는 나의 하루들</p>
+          <div id="diary-list" class="diary-list" aria-live="polite"></div>
+          <p id="archive-empty" class="archive-empty">
+            아직 기록이 없어요.<br />오늘의 첫 페이지를 채워볼까요?
+          </p>
+          <div class="archive-footer">
+            <span class="footer-sparkle" aria-hidden="true">✳</span>
+            <p>기록하는 순간,<br /><strong>오늘은 조금 더 특별해져요.</strong></p>
+          </div>
+        </aside>
+      </main>
+      <footer class="page-footer">MADE FOR YOUR EVERYDAY, WITH CARE.</footer>
+    </div>
+  </body>
+</html>

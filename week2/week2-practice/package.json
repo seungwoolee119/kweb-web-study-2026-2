@@ -1,0 +1,13 @@
+{
+  "name": "daily-diary",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple daily diary built with Express and vanilla JavaScript.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

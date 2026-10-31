@@ -1,0 +1,601 @@
+:root {
+  color-scheme: light;
+  font-family: "DM Sans", "Gowun Dodum", sans-serif;
+  color: #33352f;
+  background: #f6f3ed;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #33352f;
+  --muted: #93948c;
+  --line: #eae8e0;
+  --green: #58765b;
+  --green-dark: #435d46;
+  --cream: #fbfaf6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 18% 0%, rgba(226, 232, 214, 0.45), transparent 34rem),
+    #f6f3ed;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+.app-shell {
+  width: min(1120px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+.topbar {
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(218, 216, 205, 0.7);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  place-items: center;
+  border-radius: 12px;
+  background: #637e64;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.topbar-note {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #7e8078;
+  font-size: 12px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #91a87c;
+  box-shadow: 0 0 0 4px rgba(145, 168, 124, 0.12);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  gap: 48px;
+  padding: 66px 0 48px;
+}
+
+.diary-panel {
+  min-width: 0;
+}
+
+.greeting {
+  margin: 0 0 32px 4px;
+}
+
+.eyebrow,
+.section-label {
+  margin: 0;
+  color: #8d9781;
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.65px;
+}
+
+.greeting h1 {
+  margin: 12px 0 8px;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: clamp(25px, 3vw, 32px);
+  font-weight: 400;
+  letter-spacing: -1.6px;
+}
+
+.title-dot {
+  color: #819275;
+}
+
+.intro {
+  margin: 0;
+  color: #8d8e86;
+  font-size: 13px;
+}
+
+.entry-card {
+  padding: 31px 34px 29px;
+  border: 1px solid rgba(229, 227, 218, 0.9);
+  border-radius: 17px;
+  background: rgba(255, 255, 252, 0.88);
+  box-shadow: 0 14px 40px rgba(80, 77, 60, 0.045);
+}
+
+.entry-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.entry-top h2 {
+  margin: 7px 0 0;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: -0.6px;
+}
+
+.date-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.icon-button {
+  width: 29px;
+  height: 29px;
+  padding: 0;
+  border: 1px solid #eeece5;
+  border-radius: 9px;
+  background: transparent;
+  color: #6d7566;
+  font-size: 14px;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.icon-button:hover:not(:disabled) {
+  border-color: #d3ddce;
+  background: #f2f5ee;
+}
+
+.icon-button:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+#entry-date {
+  width: 132px;
+  padding: 7px 6px;
+  border: 0;
+  border-radius: 7px;
+  background: #f7f6f1;
+  color: #71736c;
+  font-size: 11px;
+}
+
+.mood-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 25px 0 22px;
+  padding: 0;
+  border: 0;
+}
+
+.select-field {
+  display: grid;
+  gap: 9px;
+}
+
+.field-label {
+  color: #73756d;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.select-wrap {
+  display: flex;
+  height: 43px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 11px;
+  border: 1px solid #eeece5;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.select-icon {
+  font-size: 14px;
+}
+
+.select-wrap select {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #55574f;
+  font-size: 12px;
+}
+
+.diary-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#diary-content {
+  display: block;
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  padding: 15px 16px;
+  border: 1px solid #eeece5;
+  border-radius: 10px;
+  outline: 0;
+  background: #fff;
+  color: #494b44;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: 14px;
+  line-height: 1.85;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+#diary-content::placeholder {
+  color: #b6b7af;
+}
+
+#diary-content:focus,
+.select-wrap:focus-within {
+  border-color: #9eaf96;
+  box-shadow: 0 0 0 3px rgba(121, 148, 112, 0.1);
+}
+
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.character-count {
+  color: #a0a198;
+  font-size: 11px;
+}
+
+.character-count.is-over-limit {
+  color: #bd6255;
+}
+
+.save-button {
+  display: inline-flex;
+  min-width: 142px;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 19px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--green);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.save-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: var(--green-dark);
+}
+
+.save-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.form-message {
+  min-height: 18px;
+  margin: 10px 0 0;
+  color: #b45549;
+  font-size: 12px;
+}
+
+.form-message:empty {
+  display: none;
+}
+
+.saved-entry {
+  padding: 25px 0 5px;
+}
+
+.saved-entry[hidden] {
+  display: none;
+}
+
+.saved-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6c7d63;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.meta-separator {
+  color: #c4c6bc;
+}
+
+.saved-content {
+  margin: 18px 0 24px;
+  color: #505149;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: 15px;
+  line-height: 2;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.saved-note {
+  margin: 0;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+  color: #a0a198;
+  font-size: 11px;
+}
+
+.privacy-note {
+  margin: 19px 0 0 4px;
+  color: #92938a;
+  font-size: 11px;
+}
+
+.privacy-note span {
+  margin-right: 5px;
+  color: #8c9b7a;
+}
+
+.archive-panel {
+  align-self: start;
+  margin-top: 4px;
+  padding: 24px 21px 19px;
+  border: 1px solid rgba(229, 227, 218, 0.9);
+  border-radius: 15px;
+  background: rgba(251, 250, 246, 0.7);
+}
+
+.archive-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.archive-heading h2 {
+  margin: 7px 0 0;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.entry-count {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e8ede3;
+  color: #66775f;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.archive-caption {
+  margin: 9px 0 18px;
+  color: #a0a198;
+  font-size: 11px;
+}
+
+.diary-list {
+  display: grid;
+  gap: 8px;
+  max-height: 390px;
+  overflow-y: auto;
+}
+
+.diary-item {
+  display: grid;
+  width: 100%;
+  gap: 7px;
+  padding: 12px 12px 11px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #fffefa;
+  color: inherit;
+  text-align: left;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.diary-item:hover,
+.diary-item.is-selected {
+  border-color: #dce4d6;
+  background: #f4f6f0;
+}
+
+.diary-item-date {
+  color: #666b60;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.diary-item-preview {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #9a9b92;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: 11px;
+  line-height: 1.6;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.diary-item-meta {
+  color: #87917f;
+  font-size: 10px;
+}
+
+.archive-empty {
+  margin: 25px 0 28px;
+  color: #a0a198;
+  font-size: 11px;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.archive-footer {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 16px 13px;
+  border-radius: 10px;
+  background: #eef1e9;
+}
+
+.footer-sparkle {
+  color: #819473;
+  font-size: 15px;
+}
+
+.archive-footer p {
+  margin: 0;
+  color: #85897e;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.archive-footer strong {
+  color: #64705e;
+  font-weight: 600;
+}
+
+.page-footer {
+  padding: 0 0 28px;
+  color: #b0b0a7;
+  font-family: "DM Sans", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 800px) {
+  .app-shell {
+    width: min(680px, calc(100% - 40px));
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding-top: 44px;
+  }
+
+  .archive-panel {
+    margin-top: 0;
+  }
+
+  .diary-list {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 520px) {
+  .app-shell {
+    width: calc(100% - 32px);
+  }
+
+  .topbar {
+    height: 70px;
+  }
+
+  .topbar-note {
+    font-size: 10px;
+  }
+
+  .layout {
+    padding-top: 36px;
+  }
+
+  .greeting {
+    margin-bottom: 25px;
+  }
+
+  .intro {
+    font-size: 12px;
+  }
+
+  .entry-card {
+    padding: 23px 19px 20px;
+  }
+
+  .entry-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 19px;
+  }
+
+  .date-controls {
+    align-self: flex-end;
+    margin-top: -46px;
+  }
+
+  .mood-fields {
+    grid-template-columns: 1fr;
+    gap: 13px;
+    margin-top: 20px;
+  }
+
+  #diary-content {
+    min-height: 165px;
+  }
+
+  .archive-panel {
+    padding: 21px 18px 17px;
+  }
+}
